@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+	<title>Registration </title>
+	<link rel="stylesheet" href="Institute.css">
+</head>
+	
+	
+	<body>
+		<script>
+			function validate() {
+				var x=document.getElementById('uname').value;
+				var y=document.getElementById('upass').value;
+				
+				console.log('value of x '+x);
+				console.log('value of y '+y);
+
+				if(x =="") {
+					//alert('Username cannot be blank');	
+					document.getElementById("nameErr").innerHTML="Username cannot be blank";
+					return false;
+				}		
+				
+				if(y =="") {
+					//alert('Password cannot be blank');	return false
+					document.getElementById("passErr").innerHTML="Password cannot be blank";
+					return false;
+				}			
+				return true;
+			}	
+			
+			function clearForm() {
+				document.getElementById('uname').value="";
+				document.getElementById('upass').value="";
+				
+			}
+			
+			function clearNameErrMsg() {
+				document.getElementById('nameErr').innerHTML="";
+
+			}
+			
+			function clearPassErrMsg() {
+				document.getElementById('passErr').innerHTML="";
+
+			}
+			
+		</script>
+		<h1>NATIONAL SCHOLARSHIP PORTAL</h1>	
+		<hr>
+		<h2>Institute Login Here</h2>	
+		<form action="ina.html">
+			<label>Enter username: </label> <input  type=text     onkeyup="clearNameErrMsg()" id="uname"><span id="nameErr"></span><br><br>
+			<label>Enter password: </label> <input  type=password onkeyup="clearPassErrMsg()" id="upass"><span id="passErr"></span><br><br>	
+			Not a member yet? Click <a href="Registration.html">Here</a> to register<br><br>	
+			
+			
+			<button onclick="return validate();" type="submit">Login</button>	<br>
+		</form>
+		
+		
+		
+		
+		
+	</body>
+
+</html>

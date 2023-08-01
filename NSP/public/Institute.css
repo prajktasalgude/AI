@@ -1,0 +1,24 @@
+@charset "UTF-8";
+ body{
+	 text-align: center;
+ }
+		h1 {
+			background-color:rgb(0, 255, 0); 
+			color:black;
+		}
+		h2 {
+			color: green;
+		}
+		label {
+			color:darkblue; 
+			font-size: 20px;
+		}
+		input {
+			color: black; font-size: 20px
+		}
+		button {
+			padding: 15px; background-color: magenta; font-size: 20px
+		}
+		p {
+  font-size: 20px; text-align:left;color: green;;
+}
