@@ -35,7 +35,7 @@ Connection conn ; //GLOBAL
 	public void insertStudent(Students student) {
 		try {
 			PreparedStatement pst = 
-					conn.prepareStatement("INSERT INTO DEPT10 VALUES (?,?,?)");
+					conn.prepareStatement("INSERT INTO STUDENTS VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			
 			
 			pst.setString(1, student.getStudentName());
@@ -51,8 +51,9 @@ Connection conn ; //GLOBAL
 			pst.setString(11, student.getBankAccountNumber());
 			pst.setString(12, student.getBankName());
 			pst.setString(13, student.getPassword());
-			pst.setBoolean(14, student.isStatus());
-			
+			pst.setBoolean(14, student.isStatusOfPMS());
+			pst.setBoolean(15, student.isStatusOfPragati());
+			pst.setBoolean(16, student.isStatusOfNTSC());
 		
 			
 			System.out.println("PreparedStatement is created : "+ pst);
@@ -75,7 +76,7 @@ Connection conn ; //GLOBAL
 			Statement statement = conn.createStatement();
 			System.out.println("Statement is created : "+ statement);
 			
-			//4. execute that statement //  UR TABLENAME IS MYDEPT120
+			//4. execute that statement 
 			ResultSet result = statement.executeQuery("SELECT * FROM STUDENTS WHERE AADHAR=student.getAAdhar()");
 			
 			//5. process teh result if any
@@ -95,7 +96,9 @@ Connection conn ; //GLOBAL
 				student.setBankAccountNumber(result.getString(11));
 				student.setBankName(result.getString(12));
 				student.setPassword(result.getString(13));
-				student.setStatus(result.getBoolean(14));
+				student.setStatusOfPMS(result.getBoolean(14));
+				student.setStatusOfPragati(result.getBoolean(15));
+				student.setStatusOfNTSC(result.getBoolean(16));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -134,7 +137,9 @@ Connection conn ; //GLOBAL
 				student.setBankAccountNumber(result.getString(11));
 				student.setBankName(result.getString(12));
 				student.setPassword(result.getString(13));
-				student.setStatus(result.getBoolean(14));
+				student.setStatusOfPMS(result.getBoolean(14));
+				student.setStatusOfPragati(result.getBoolean(15));
+				student.setStatusOfNTSC(result.getBoolean(16));
 				studentList.add(student); // add this object to the LIST 
 			}
 		} catch (SQLException e) {
@@ -149,7 +154,7 @@ Connection conn ; //GLOBAL
 		// TODO Auto-generated method stub
 		try {
 			PreparedStatement pst = 
-					conn.prepareStatement("UPDATE STUDENTS set dname=?, loc=? where deptno=?");
+					conn.prepareStatement("UPDATE STUDENTS set student_name=?,dob=?,gender=?,state_of_domicile=?,district=?,institute_code=?,email=?,mobile=?,bank_ifsc=?,bank_account_number=?,bank_name=?,password=?,status_of_pms=?,status_of_pragati=?,status_of_ntse=? where aadhar_number=?");
 			
 			
 			pst.setString(1, student.getStudentName());
@@ -158,15 +163,16 @@ Connection conn ; //GLOBAL
 			pst.setString(4, student.getStateOfDomicile());
 			pst.setString(5, student.getDistrict());
 			pst.setString(6, student.getInstituteCode());
-			pst.setString(7, student.getAadharNumber());
-			pst.setString(8, student.getEmail());
-			pst.setString(9, student.getMobile());
-			pst.setString(10, student.getBankIFSC());
-			pst.setString(11, student.getBankAccountNumber());
-			pst.setString(12, student.getBankName());
-			pst.setString(13, student.getPassword());
-			pst.setBoolean(14, student.isStatus()); 
-
+			pst.setString(16, student.getAadharNumber());
+			pst.setString(7, student.getEmail());
+			pst.setString(8, student.getMobile());
+			pst.setString(9, student.getBankIFSC());
+			pst.setString(10, student.getBankAccountNumber());
+			pst.setString(11, student.getBankName());
+			pst.setString(12, student.getPassword());
+			pst.setBoolean(13, student.isStatusOfPMS()); 
+			pst.setBoolean(14, student.isStatusOfPragati());
+			pst.setBoolean(15, student.isStatusOfNTSC());
 			
 			System.out.println("PreparedStatement is created : "+ pst);
 			

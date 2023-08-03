@@ -20,8 +20,9 @@ public class Students {
 	private String bankAccountNumber;
 	private String bankName;
 	private String password;
-	private boolean status;
-	
+	private boolean statusOfPMS;
+	private boolean statusOfPragati;
+	private boolean statusOfNTSC;
 	
 	public String getStudentName() {
 		return studentName;
@@ -101,12 +102,23 @@ public class Students {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public boolean isStatus() {
-		return status;
+	public boolean isStatusOfPMS() {
+		return statusOfPMS;
 	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	
+	public void setStatusOfPMS(boolean statusOfPMS) {
+		this.statusOfPMS = statusOfPMS;
+	}
+	public boolean isStatusOfPragati() {
+		return statusOfPragati;
+	}
+	public void setStatusOfPragati(boolean statusOfPragati) {
+		this.statusOfPragati = statusOfPragati;
+	}
+	public boolean isStatusOfNTSC() {
+		return statusOfNTSC;
+	}
+	public void setStatusOfNTSC(boolean statusOfNTSC) {
+		this.statusOfNTSC = statusOfNTSC;
 	}
 	
 }
