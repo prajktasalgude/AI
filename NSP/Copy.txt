@@ -1,0 +1,20 @@
+last 3 queries of student :
+
+
+insert into student values ('456289762312','Ajay Gupta','2001-09-23','Male','13844','36720615780987','ajay@123');
+insert into student values ('243156748976','Rohit Verma','2000-07-18','Male','13844','53800100005645','rohit@123');
+insert into student values ('142376521987','Shubham Jain','2000-05-11','Male','23036','50100615786512','shubham@123');
+insert into student values ('345267521241','Jay Kumar','2002-03-09','Male','34675','53800100007862','jay@123');
+insert into student values ('897635263526','Kiran Sharma','2002-09-27','Female','23036','23527823893423','kiran@123');
+insert into student values ('671525451672','Bharat Sen','2000-01-25','Male','34675','23167287256','bharat@123');
+insert into student values ('293809326723','Anurag Vaishnav','2002-09-27','Male','23036','23715621987126','anurag@123');
+insert into student values ('923948739948','Anushka Chouhan','2002-08-14','Female','13844','73842367265','anushka@123');
+insert into student values ('892737826524','Yuvraj Sahu','2001-03-24','Male','19896','78230929328909','yuvraj@123');
+
+
+
+insert into student values ('343799834403','Ayush Dewangan','2001-11-08','Male','19896','89722341562372','ayush@123');
+insert into student values ('254575876989','Bhawna Patil','2001-07-24','Female','19896','34892347893209','bhawna@123');
+insert into student values ('345875986938','Nikita Bhai','2001-07-24','Female','34675','34986743209378','nikita@123');
+
+
