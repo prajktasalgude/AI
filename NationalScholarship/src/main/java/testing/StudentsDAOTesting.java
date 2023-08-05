@@ -1,6 +1,5 @@
 package testing;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -17,17 +16,33 @@ public class StudentsDAOTesting {
 	StudentsDAO studDAO = new StudentsDAOImplementation();
 	
 	@Test
-	public void selectTest() {
+	public void createStudentTest() {
 		
-		System.out.println("Test started..");
-		Assertions.assertTrue(studDAO!=null);
-		System.out.println("Got the DAO : "+studDAO);
-
-		Students studObj = studDAO.selectStudent("345875986938");
+		Students stud = new Students();
+		Assertions.assertTrue(stud!=null);
+		System.out.println("stud created....");
 		
-		System.out.println("Student Obj : "+studObj);
-
-		System.out.println("Test over...");
+		stud.setAadharNumber("547658787998");
+		stud.setStudentName("Shriya Pande");
+		
+//		int year = 2007;
+//		int month = 7; // Note: Months are 0-based in Calendar, so 7 represents August
+//		int day = 5;
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.set(Calendar.YEAR, year);
+//		calendar.set(Calendar.MONTH, month);
+//		calendar.set(Calendar.DAY_OF_MONTH, day);
+//		Date date = calendar.getTime();
+		stud.setDOB(new Date());
+		
+		stud.setGender("Female");
+		stud.setInstituteCode("65476");
+		stud.setAccountNumber("3546547688");
+		
+		stud.setPassword("Shriya@123");
+		
+		studDAO.insertStudent(stud);
+		
 	}
 	
 	@Test
@@ -44,36 +59,20 @@ public class StudentsDAOTesting {
 		System.out.println("Test over...");
 	}
 	
-	
 	@Test
-	public void createEmployeeTest() {
+	public void selectTest() {
 		
-		Students stud = new Students();
-		Assertions.assertTrue(stud!=null);
-		System.out.println("stud created....");
+		System.out.println("Test started..");
+		Assertions.assertTrue(studDAO!=null);
+		System.out.println("Got the DAO : "+studDAO);
+
+		Students studObj = studDAO.selectStudent("345875986938");
 		
-		stud.setAadharNumber("547658787998");
-		stud.setStudentName("Shriya Pande");
-		
-		int year = 2007;
-		int month = 7; // Note: Months are 0-based in Calendar, so 7 represents August
-		int day = 5;
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.YEAR, year);
-		calendar.set(Calendar.MONTH, month);
-		calendar.set(Calendar.DAY_OF_MONTH, day);
-		Date date = calendar.getTime();
-		stud.setDOB(date);
-		
-		stud.setGender("Female");
-		stud.setInstituteCode("65476");
-		stud.setAccountNumber("3546547688");
-		
-		stud.setPassword("Shriya@123");
-		
-		studDAO.insertStudent(stud);
-		
+		System.out.println("Student Obj : "+studObj);
+
+		System.out.println("Test over...");
 	}
+	
 	
 //	@Test
 //	public void modifyEmployeeTest() {

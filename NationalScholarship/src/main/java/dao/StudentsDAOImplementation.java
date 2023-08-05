@@ -22,7 +22,8 @@ public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
 			
 			
 			pst.setString(1, student.getStudentName());
-			pst.setDate(2,(Date) student.getDOB());
+			java.sql.Date dob = new java.sql.Date(student.getDOB().getTime());
+			pst.setDate(2,dob);
 			pst.setString(3, student.getGender());
 			pst.setString(6, student.getInstituteCode());
 			pst.setString(7, student.getAadharNumber());
@@ -32,7 +33,7 @@ public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
 			
 			System.out.println("PreparedStatement is created : "+ pst);
 			
-			//4. execute that statement //  UR TABLENAME IS MYDEPT120
+			//4. execute that statement 
 			int rows = pst.executeUpdate();
 			
 			System.out.println("Rows created : "+rows);
@@ -53,7 +54,7 @@ public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
 			//4. execute that statement 
 			ResultSet result = statement.executeQuery("SELECT * FROM STUDENT WHERE AADHAR_NUMBER=student.getAadharNumber()");
 			
-			//5. process teh result if any
+			//5. process the result if any
 			if(result.next()) {
 				student = new Students(); //blank object
 				
