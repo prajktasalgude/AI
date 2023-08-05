@@ -112,7 +112,10 @@ VALUES ( '923948739948', 'Raj Chauhan', 'Disha Chauhan',true ,660000 , 'OPEN',fa
 
 
 
-
+TABLE SCHOLARSHIP :
+alter table scholarship add column applied_NTSC int;
+alter table scholarship add column applied_Pragati int  ;
+alter table scholarship add column applied_PMS int  ;  
 
 
 
