@@ -54,7 +54,7 @@ try {
 			System.out.println("Statement is created : "+ statement);
 			
 			//4. execute that statement 
-			ResultSet result = statement.executeQuery("SELECT * FROM STUDENTS WHERE AADHAR=student.getAAdhar()");
+			ResultSet result = statement.executeQuery("SELECT * FROM PERSONAL_DETAILS WHERE AADHAR_NUMBER="+aadharNumber);
 			
 			//5. process teh result if any
 			if(result.next()) {

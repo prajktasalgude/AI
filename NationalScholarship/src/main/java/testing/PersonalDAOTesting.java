@@ -3,12 +3,12 @@ package testing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import dao.EducationDAO;
-import dao.EducationDAOImplementation;
-import entities.Education;
+import dao.PersonalDAO;
+import dao.PersonalDAOImplementation;
+import entities.Personal;
 
 public class PersonalDAOTesting {
-EducationDAO eduDAO = new EducationDAOImplementation();
+	PersonalDAO eduDAO = new PersonalDAOImplementation();
 	
 	@Test
 	public void selectTest() {
@@ -17,7 +17,7 @@ EducationDAO eduDAO = new EducationDAOImplementation();
 		Assertions.assertTrue(eduDAO!=null);
 		System.out.println("Got the DAO : "+eduDAO);
 
-		Education eduObj = eduDAO.selectEducation("456289762312");
+		Personal eduObj = eduDAO.selectPersonal("456289762312");
 		
 		System.out.println("Edu Obj : "+eduObj);
 
@@ -27,20 +27,19 @@ EducationDAO eduDAO = new EducationDAOImplementation();
 	@Test
 	public void createEducationTest() {
 		
-		Education eduObj = new Education();
+		Personal eduObj = new Personal();
 		Assertions.assertTrue(eduObj!=null);
 		System.out.println("edu created....");
 		eduObj.setAadharNumber("456289762312");
-		eduObj.setTenthPercentage(88.00f);
-		eduObj.setTwelthPercentage(82.20f);
-		eduObj.setNinthPercentage(87.17f);		
-		eduObj.setAdmissionFee(500);
-		eduObj.setTuitionFee(14325);		
-		eduObj.setTenthYear(2017);
-		eduObj.setTwelthYear(2019);
-		eduObj.setNinthYear(2016);
+		eduObj.setFatherName("hfyg");
+		eduObj.setMotherName("vggj");
+		eduObj.setMaritalStatus(false);		
+		eduObj.setAnnualIncome(500000);
+		eduObj.setCaste("OPEN");		
+		eduObj.setDisable(false);
+
 		
-		eduDAO.createEducation(eduObj);
+		eduDAO.insertPersonal(eduObj);
 	}
 	
 }
