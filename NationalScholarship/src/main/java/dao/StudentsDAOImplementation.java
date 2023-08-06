@@ -20,15 +20,14 @@ public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
 			PreparedStatement pst = 
 					conn.prepareStatement("INSERT INTO STUDENT VALUES (?,?,?,?,?,?,?)");
 			
-			
-			pst.setString(1, student.getStudentName());
+			pst.setString(1, student.getAadharNumber());
+			pst.setString(2, student.getStudentName());
 			java.sql.Date dob = new java.sql.Date(student.getDOB().getTime());
-			pst.setDate(2,dob);
-			pst.setString(3, student.getGender());
-			pst.setString(6, student.getInstituteCode());
-			pst.setString(7, student.getAadharNumber());
-			pst.setString(11, student.getAccountNumber());
-			pst.setString(13, student.getPassword());
+			pst.setDate(3,dob);
+			pst.setString(4, student.getGender());
+			pst.setString(5, student.getInstituteCode());
+			pst.setString(6, student.getAccountNumber());
+			pst.setString(7, student.getPassword());
 
 			
 			System.out.println("PreparedStatement is created : "+ pst);
@@ -52,7 +51,7 @@ public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
 			System.out.println("Statement is created : "+ statement);
 			
 			//4. execute that statement 
-			ResultSet result = statement.executeQuery("SELECT * FROM STUDENT WHERE AADHAR_NUMBER=student.getAadharNumber()");
+			ResultSet result = statement.executeQuery("SELECT * FROM STUDENT WHERE AADHAR_NUMBER="+aadharNumber);
 			
 			//5. process the result if any
 			if(result.next()) {
