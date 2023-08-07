@@ -19,7 +19,7 @@ public class InstituteDAOTesting {
 		
 		Institute institute = new Institute();
 		Assertions.assertTrue(institute!=null);
-		System.out.println("stud created....");
+		System.out.println("institute created....");
 		
 		institute.setInstituteCode("76889");
 		institute.setInstituteName("Govt. Engineering College, Sambhajinagar");

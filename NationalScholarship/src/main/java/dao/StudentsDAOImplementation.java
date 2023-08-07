@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import entities.Institute;
 import entities.Students;
 
 public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
@@ -132,6 +133,39 @@ public class StudentsDAOImplementation extends BaseDAO implements StudentsDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	@Override
+	public List<Students> selectStudents(Institute institute) {
+		// TODO Auto-generated method stub
+		List<Students> studentList = new ArrayList<Students>();
+		try {
+			
+			 
+			Statement statement = conn.createStatement();
+			//System.out.println("Statement is created : "+ statement);
+			
+			//4. execute that statement //  UR TABLENAME IS MYDEPT120
+			ResultSet result = statement.executeQuery("SELECT * FROM STUDENT where institute_code="+institute.getInstituteCode());
+			
+			//5. process the result if any
+			while(result.next()) {
+				Students student = new Students(); //blank object
+				
+				student.setAadharNumber(result.getString(1));
+				student.setStudentName(result.getString(2));
+				student.setDOB(result.getDate(3));
+				student.setGender(result.getString(4));
+				student.setInstituteCode(result.getString(5));
+				student.setAccountNumber(result.getString(6));
+				student.setPassword(result.getString(7));
+				studentList.add(student); // add this object to the LIST 
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return studentList;
 		
 	}
 	

@@ -7,7 +7,7 @@ import entities.SNO;
 public interface SNOService {
 	void createSNOService(SNO sno);
 	SNO findSNOService(String username);
-	List<SNO> findSNOService();
+	List<SNO> findSNOsService();
 	void modifySNOService(SNO sno);
 	void removeSNOService(String aadhartNumber);
 }

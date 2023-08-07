@@ -7,7 +7,7 @@ import entities.Bank;
 public interface BankService {
 	void createBankService(Bank bank);
 	Bank findBankService(String accountNumber);
-	List<Bank> findBankService();
+	List<Bank> findBanksService();
 	void modifyBankService(Bank bank);
 	void removeBankService(String accountNumber);
 }

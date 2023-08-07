@@ -26,7 +26,6 @@ public class BankDAOTesting {
 		bank.setIfsc("SBINO000675867");
 		bank.setBankName("SBI");
 		bank.setBalance(6578);
-		//institute.setVerified(false);
 		
 		bankDAO.createBank(bank);
 		
