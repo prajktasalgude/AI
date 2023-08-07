@@ -6,7 +6,7 @@ create table student (aadhar_number varchar(12) primary key, student_name varcha
 create table personal_details (aadhar_number varchar(12), father_name varchar(30), mother_name varchar(30), marital_status boolean, annual_income int, caste varchar(16), is_disable boolean, foreign key (aadhar_number) references student (aadhar_number));
 create table scholarship (aadhar_number varchar(12), ntse varchar(10), pragati varchar(10), pms varchar(10), foreign key (aadhar_number) references student (aadhar_number));
 create table contact_details (aadhar_number varchar(20), institute_code varchar(5), state varchar(50), district varchar(20), address_line varchar(100), pincode varchar(6), mobile_number varchar(13), email varchar(30), foreign key (aadhar_number) references student (aadhar_number), foreign key (institute_code) references institute (institute_code));
-create table educational_details (aadhar_number varchar(12) primary key, tenth_percentage float, twelth_percentage float, ninth_percentage float, admission_fee int, tuition_fee int, tenth_passing_year int, twelth_passing_year int, ninth_passing_year int, foreign key (aadhar_number) references student (aadhar_number)); 
+create table educational_details (aadhar_number varchar(12), tenth_percentage float, twelth_percentage float, ninth_percentage float, admission_fee int, tuition_fee int, tenth_passing_year int, twelth_passing_year int, ninth_passing_year int, foreign key (aadhar_number) references student (aadhar_number)); 
 
 
 Queries for institute : 
@@ -50,4 +50,103 @@ insert into student values ('892737826524','Yuvraj Sahu','2001-03-24','Male','19
 insert into student values ('343799834403','Ayush Dewangan','2001-11-08','Male','19896','89722341562372','ayush@123');
 insert into student values ('254575876989','Bhawna Patil','2001-07-24','Female','19896','34892347893209','bhawna@123');
 insert into student values ('345875986938','Nikita Bhai','2001-07-24','Female','34675','34986743209378','nikita@123');
+
+
+
+
+
+Queries for Scholarship : 
+
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '456289762312', 'Applied', 'NA', 'NA',0,1,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '243156748976', 'Applied', 'NA', 'Applied',2,1,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '142376521987', 'NA', 'NA', 'Applied',0,0,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '345267521241', 'NA', 'NA', 'NA',0,0,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '897635263526', 'Applied', 'Applied', 'NA',0,1,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '671525451672', 'NA', 'NA', 'Applied',0,0,1);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '293809326723', 'Applied', 'NA', 'NA',1,1,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '923948739948', 'NA', 'Applied', 'Applied',1,0,1);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '892737826524', 'Applied', 'NA', 'Applied',1,0,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '343799834403', 'Applied', 'Applied', 'NA',0,1,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '254575876989', 'Applied', 'Applied', 'Applied',0,1,0);
+INSERT INTO "PUBLIC"."SCHOLARSHIP"
+( "AADHAR_NUMBER", "NTSE", "PRAGATI", "PMS", "ALREADY_NTSE", "ALREADY_PRAGATI", "ALREADY_PMS" )
+VALUES ( '345875986938', 'Applied', 'Applied', 'NA',1,0,0);
+
+
+Queries for contact details : 
+
+For Students :
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '456289762312', 'Maharashtra', 'Pune', 'Shivaji Chouk, Pune', '411057', '9828239921','ajaygupta@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '243156748976', 'Maharashtra', 'Pune', 'Laxmi Chouk, Pune', '411057', '8932847322','rohitverma@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER",  "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '142376521987', 'Maharashtra', 'Karad', 'Bajaj Nagar, Karad', '412378', '7678239823','shubhamjain@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '345267521241',  'Maharashtra', 'Mumbai', 'Street No 4, Thane', '417826', '9823423789','jaykumar@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '897635263526', 'Maharashtra', 'Pune', 'Bajaj Nagar, Karad', '412378', '7834283754','kiransharma@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '671525451672', 'Maharashtra', 'Pune', 'Street No 6, Thane', '417826', '9988993453','bharatsen@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER",  "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '293809326723', 'Maharashtra', 'Karad', 'Damani Nagar, Karad', '412378', '8989440441','anuragvaishnav@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '923948739948',  'Maharashtra', 'Nerul', 'Budhwar Peth, Nerul', '453625', '6536367987','anushkachouhan@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '892737826524', 'Maharashtra', 'Nerul', 'Sardarpura, Nerul', '453625', '9872362788','yuvrajsahu@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '343799834403', 'Maharashtra', 'Nerul', 'Gol Chouk, Nerul', '453625', '7846352646','ayushdewangan@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER",  "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '254575876989', 'Maharashtra', 'Nerul', 'DD Nagar, Nerul', '453625', '6574837278','bhavnapatil@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "AADHAR_NUMBER", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '345875986938',  'Maharashtra', 'Thane', 'East Line, Thane', '417826', '6536367987','nikitabhati@gmail.com');
+
+
+For Institue : 
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "INSTITUTE_CODE", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '13844', 'Maharashtra', 'Pune', 'HInjewadi phase 1, Pune', '411057', '47867536475','armedforced@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "INSTITUTE_CODE", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '23036', 'Maharashtra', 'Karad', 'Shivaji Chouk, Karad', '412378', '8978473847','krishnadentalschool@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "INSTITUTE_CODE", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '34675', 'Maharashtra', 'Thane', 'West Bunglow, Thane', '417826', '9787635232','rbkschool@gmail.com');
+INSERT INTO "PUBLIC"."CONTACT_DETAILS"
+( "INSTITUTE_CODE", "STATE", "DISTRICT", "ADDRESS_LINE", "PINCODE", "MOBILE_NUMBER", "EMAIL" )
+VALUES ( '19896', 'Maharashtra', 'Nerul', 'Nayi Sadak, Nerul', '453625', '7867564534','dpsschool@gmail.com');
 
