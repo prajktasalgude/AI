@@ -16,37 +16,33 @@ public class Main {
 		EducationService eduSer=new EducationServiceImplementation();
 		
 		
-		List <Students> studList=studSer.findStudentsService();
-//		for(Students st:studList) {
-//			Scholarship sch=schSer.findScholarshipService(st.getAadharNumber());
-//			System.out.println(sch);
-//			System.out.println("---------------");
-//			System.out.println();
-//		}
-		
+		List <Students> studList=studSer.findStudentsService();		
 		for(Students stud:studList) {
 			
 			Scholarship sch=schSer.findScholarshipService(stud.getAadharNumber());
 			
-			if(sch!=null && sch.getAlreadyNTSE()<2) {  // && sch.getNTSE()=="Approved") {
-//				System.out.println(sch);
-//				System.out.println("---------------");
+			if(sch!=null && sch.getAlreadyNTSE()<2 && sch.getNTSE().equals("Approved")) {
 				 Personal per=perSer.findPersonalService(stud.getAadharNumber());
-				 if(per!=null && (per.getCaste()=="SC" || per.getCaste()=="ST" || per.isDisable()==true) ) {
+				 if(per!=null ) {
+					 if(per.getCaste().equals("SC") || per.getCaste().equals("ST") || per.isDisable()==true)  {
+				 
 					 Education edu=eduSer.findEducationService(stud.getAadharNumber());
 					 if( edu!=null && (edu.getNinthPercentage()>=55f) ) { 
 						 sch.setNTSE("Verified");
 						 schSer.modifyScholarshipService(sch);
+						 System.out.println(sch);
 					 }
 				 }
-				 else if(per!=null && per.getCaste()=="OPEN") {
+				 else if(per.getCaste().equals("OPEN")) {
 					 Education edu=eduSer.findEducationService(stud.getAadharNumber());
 					 if(edu!=null && edu.getNinthPercentage()>=60 ) {
 						 sch.setNTSE("Verified");
 						 schSer.modifyScholarshipService(sch);
+						 System.out.println(sch);
 					 }
 				 }
-				 System.out.println(sch);
+				 }
+				 
 			}
 			
 		}
