@@ -32,7 +32,6 @@ public class BankServiceImplementation implements BankService{
 	public void modifyBankService(Bank bank) {
 		// TODO Auto-generated method stub
 		bankDAO.updateBank(bank);
-		
 	}
 
 	@Override
@@ -54,8 +53,8 @@ public class BankServiceImplementation implements BankService{
 		bank.setBalance(6578);
 		//bankSer.createBankService(bank);
 		
-		Bank b=bankSer.findBankService(bank.getAccountNumber());
-		System.out.println(b);
+//		Bank b=bankSer.findBankService(bank.getAccountNumber());
+//		System.out.println(b);
 		
 		List <Bank> bankList=bankSer.findBanksService();
 		for(Bank b1:bankList) {

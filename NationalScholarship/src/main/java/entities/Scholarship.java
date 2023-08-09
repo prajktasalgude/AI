@@ -55,8 +55,8 @@ public class Scholarship {
 
 	@Override
 	public String toString() {
-		return "Scholarship [aadharNumber=" + aadharNumber + ", NTSC=" + NTSE + ", Pragati=" + Pragati + ", PMS=" + PMS
-				+ ", alreadyNTSC=" + alreadyNTSE + ", alreadyPragati=" + alreadyPragati + ", alreadyPMS=" + alreadyPMS
+		return "Scholarship [aadharNumber=" + aadharNumber + ", NTSE=" + NTSE + ", Pragati=" + Pragati + ", PMS=" + PMS
+				+ ", alreadyNTSE=" + alreadyNTSE + ", alreadyPragati=" + alreadyPragati + ", alreadyPMS=" + alreadyPMS
 				+ "]";
 	}	
 	

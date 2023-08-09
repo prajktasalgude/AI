@@ -7,7 +7,7 @@ import entities.Education;
 public interface EducationService {
 	void createEducationService(Education edu);
 	Education findEducationService(String aadharNumber);
-	List<Education> findEducationService();
+	List<Education> findEducationsService();
 	void modifyEducationService(Education education);
 	void removeEducationService(String aadhartNumber);
 }

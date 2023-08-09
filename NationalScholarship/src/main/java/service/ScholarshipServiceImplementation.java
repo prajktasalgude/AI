@@ -22,7 +22,7 @@ public class ScholarshipServiceImplementation implements ScholarshipService {
 	}
 
 	@Override
-	public List<Scholarship> findScholarshipService() {
+	public List<Scholarship> findScholarshipsService() {
 		// TODO Auto-generated method stub
 		List <Scholarship> schList=scholarDAO.selectScholarships();
 		return schList;

@@ -36,6 +36,7 @@ public class InstituteServiceImplementation implements InstituteService{
 	@Override
 	public void modifyInstituteService(Institute institute) {
 		// TODO Auto-generated method stub
+		instDAO.updateInstitute(institute);
 		
 	}
 

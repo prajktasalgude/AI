@@ -9,11 +9,11 @@ public class ContactServiceImplementation implements ContactService {
 	public void createContactService(Contact contact) {
 		contDAO.insertContact(contact);
 	}
-	public Contact findConactService(String aadharNumber){
+	public Contact findContactService(String aadharNumber){
 		Contact cont=contDAO.selectContact(aadharNumber);
 		return cont;
 	}
-	public List<Contact> findContactService(){
+	public List<Contact> findContactsService(){
 		List<Contact>contactList=contDAO.selectContacts();
 		return contactList;
 	}

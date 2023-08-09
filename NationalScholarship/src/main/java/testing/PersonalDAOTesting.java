@@ -1,5 +1,7 @@
 package testing;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,18 +10,32 @@ import dao.PersonalDAOImplementation;
 import entities.Personal;
 
 public class PersonalDAOTesting {
-	PersonalDAO eduDAO = new PersonalDAOImplementation();
+	PersonalDAO perDAO = new PersonalDAOImplementation();
 	
 	@Test
 	public void selectTest() {
 		
 		System.out.println("Test started..");
-		Assertions.assertTrue(eduDAO!=null);
-		System.out.println("Got the DAO : "+eduDAO);
+		Assertions.assertTrue(perDAO!=null);
+		System.out.println("Got the DAO : "+perDAO);
 
-		Personal eduObj = eduDAO.selectPersonal("456289762312");
+		Personal perObj = perDAO.selectPersonal("456289762312");
 		
-		System.out.println("Edu Obj : "+eduObj);
+		System.out.println("Edu Obj : "+perObj);
+
+		System.out.println("Test over...");
+	}
+	
+	@Test
+	public void selectsTest() {
+		
+		System.out.println("Test started..");
+		Assertions.assertTrue(perDAO!=null);
+		System.out.println("Got the DAO : "+perDAO);
+
+		List <Personal> perObj = perDAO.selectPersonals();
+		for(Personal per:perObj)
+			System.out.println("Per Obj : "+perObj);
 
 		System.out.println("Test over...");
 	}
@@ -39,7 +55,7 @@ public class PersonalDAOTesting {
 		eduObj.setDisable(false);
 
 		
-		eduDAO.insertPersonal(eduObj);
+		perDAO.insertPersonal(eduObj);
 	}
 	
 }

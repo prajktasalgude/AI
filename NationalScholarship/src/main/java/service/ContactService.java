@@ -6,8 +6,8 @@ import entities.Contact;
 
 public interface ContactService {
 	void createContactService(Contact contact);
-	Contact findConactService(String aadharNumber);
-	List<Contact> findContactService();
+	Contact findContactService(String aadharNumber);
+	List<Contact> findContactsService();
 	void modifyContactService(Contact contact);
 	void removeAccountService(String aadhartNumber);
 }

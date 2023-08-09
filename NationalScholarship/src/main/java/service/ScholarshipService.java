@@ -7,7 +7,7 @@ import entities.Scholarship;
 public interface ScholarshipService {
 	void createScholarshipService(Scholarship sch);
 	Scholarship findScholarshipService(String aadharNumber);
-	List<Scholarship> findScholarshipService();
+	List<Scholarship> findScholarshipsService();
 	void modifyScholarshipService(Scholarship sch);
 	void removeScholarshipService(String aadhartNumber);
 }

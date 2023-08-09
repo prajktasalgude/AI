@@ -107,7 +107,7 @@ public class ScholarshipDAOImplementation extends BaseDAO implements Scholarship
 		// TODO Auto-generated method stub
 		try {
 			PreparedStatement pst = 
-					conn.prepareStatement("UPDATE SCHOLARSHIP set NTSE=?,Pragati=?,PMS=?,applied_ntsc=?,applied_pragati=?,applied_pms=? where aadhar_number=?");
+					conn.prepareStatement("UPDATE SCHOLARSHIP set NTSE=?,Pragati=?,PMS=?,already_ntse=?,already_pragati=?,already_pms=? where aadhar_number=?");
 			
 			
 			pst.setString(7, scholarship.getAadharNumber());

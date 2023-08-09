@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import entities.Personal;
@@ -79,7 +80,35 @@ try {
 	@Override
 	public List<Personal> selectPersonals() {
 		// TODO Auto-generated method stub
-		return null;
+		List<Personal> perList=new ArrayList <Personal>();
+		//Personal per=null;
+		try {
+					
+					Statement statement = conn.createStatement();
+					System.out.println("Statement is created : "+ statement);
+					
+					//4. execute that statement 
+					ResultSet result = statement.executeQuery("SELECT * FROM PERSONAL_DETAILS");
+					
+					//5. process teh result if any
+					while(result.next()) {
+						Personal per = new Personal(); //blank object
+						
+						per.setAadharNumber(result.getString(1));
+						per.setFatherName(result.getString(2));
+						per.setMotherName(result.getString(3));
+						per.setMaritalStatus(result.getBoolean(4));
+						per.setAnnualIncome(result.getInt(5));
+						per.setCaste(result.getString(6));
+						per.setDisable(result.getBoolean(7));
+						perList.add(per);
+
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return perList;
 	}
 
 	@Override

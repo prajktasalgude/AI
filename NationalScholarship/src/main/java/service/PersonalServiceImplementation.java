@@ -23,7 +23,7 @@ public class PersonalServiceImplementation implements PersonalService {
 	}
 
 	@Override
-	public List<Personal> findPersonalService() {
+	public List<Personal> findPersonalsService() {
 		// TODO Auto-generated method stub
 		List<Personal>personalList=personalDAO.selectPersonals();
 		return personalList;

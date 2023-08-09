@@ -23,7 +23,7 @@ public class EducationServiceImplementation implements EducationService {
 	}
 
 	@Override
-	public List<Education> findEducationService() {
+	public List<Education> findEducationsService() {
 		// TODO Auto-generated method stub
 		List<Education> eduList=eduDAO.selectEducations();
 		return eduList;
