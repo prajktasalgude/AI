@@ -20,7 +20,7 @@ public class InstituteRegistration {
 		institute.setPrincipleName("p. S. Kharat");
 		institute.setLocation("Urban");
 		institute.setInstitutePassword("Orchid@123");
-		institute.setVerified(false);
+		institute.setVerified(true);
 		instSer.createInstituteService(institute);
 	}
 		

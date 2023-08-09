@@ -25,7 +25,7 @@ public class SNOLogin {
 	EducationService eduSer=new EducationServiceImplementation();
 	
 	@Test
-	public void SNO() {
+	public void StudentVerificationNTSE() {
 	List <Students> studList=studSer.findStudentsService();		
 	for(Students stud:studList) {
 		
@@ -34,8 +34,17 @@ public class SNOLogin {
 			
 			System.out.println(sch);
 		}
+		else if(sch!=null && sch.getPMS().equals("Verified")) {
+			
+			System.out.println(sch);
+		}
+		else if(sch!=null && sch.getPragati().equals("Verified")) {
+			
+			System.out.println(sch);
+		}
 		
-		else if(sch!=null && sch.getAlreadyNTSE()<2 && sch.getNTSE().equals("Approved")) {
+		
+		if(sch!=null && sch.getAlreadyNTSE()<2 && sch.getNTSE().equals("Approved")) {
 			 Personal per=perSer.findPersonalService(stud.getAadharNumber());
 			 if(per!=null ) {
 				 if(per.getCaste().equals("SC") || per.getCaste().equals("ST") || per.isDisable()==true)  {
@@ -58,8 +67,39 @@ public class SNOLogin {
 		}
 			 
 	}
+		if(sch!=null && sch.getAlreadyPMS()<2 && sch.getPMS().equals("Approved")) {
+			Personal per=perSer.findPersonalService(stud.getAadharNumber());
+			 if(per!=null ) {
+				 if(per.getAnnualIncome()<=800000 && (per.getCaste().equals("SC") || per.getCaste().equals("ST") || per.isDisable()==true))  {
+			 
+				 Education edu=eduSer.findEducationService(stud.getAadharNumber());
+				 if( edu!=null && (edu.getTenthPercentage()>=60f && edu.getTwelthPercentage()>=60f  ) ) { 
+					 sch.setNTSE("Verified");
+					 schSer.modifyScholarshipService(sch);
+					 System.out.println(sch);
+				 }
+			 }
 		
 	}
 	
+	}
+		if(stud.getGender().equals("Female")) {
+			if(sch!=null && sch.getAlreadyPragati()<2 && sch.getPragati().equals("Approved")) {
+		}
+			Personal per=perSer.findPersonalService(stud.getAadharNumber());
+			 if(per!=null ) {
+				 if(per.getAnnualIncome()<=800000 )  {
+			 
+				 Education edu=eduSer.findEducationService(stud.getAadharNumber());
+				 if( edu!=null && (edu.getTenthPercentage()>=60f && edu.getTwelthPercentage()>=60f  ) ) { 
+					 sch.setNTSE("Verified");
+					 schSer.modifyScholarshipService(sch);
+					 System.out.println(sch);
+				 }
+			 }
+		
+	}
+		}
+	}
 	}
 }
