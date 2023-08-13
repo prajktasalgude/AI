@@ -64,6 +64,19 @@
         input[type="submit"],input[type="reset"]:hover {
             background-color: #45a049;
         }
+        
+        button[type="button"]{
+			background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+		}
+		
+		button[type="button"] :hover{
+			background-color: #45a049;
+		}
     </style>
 </head>
 <body>
@@ -95,10 +108,7 @@
                 <button disabled>disable</button>
             </fieldset>
             
-            <label>
-                <input type="checkbox" id="agree" required>
-                All the details furnished by me are true to the best of my knowledge.
-            </label>
+           
         </div>
         
         <div>
@@ -128,10 +138,89 @@
             <label for="twelth_year">12th Passing Year </label>
             <input type="number" id="twelth_year" name="twelth_year" min="1900" max="2023">
             
-            <label for="ninth_year">10th Passing Year </label>
+            <label for="ninth_year">9th Passing Year </label>
             <input type="number" id="ninth_year" name="ninth_year" min="1900" max="2023">
 
             </fieldset></div>
+            
+            
+            <div>
+				<fieldset>
+            <legend>Contact Details</legend>
+            <label for="state">State</label>
+            <select name="state" placeholder="Select State" id="state" required>
+					  <option value="Rajasthan">Rajasthan</option>
+					  <option value="Madhya Pradesh">Madhya Pradesh</option>
+					  <option value="Maharashtra">Maharashtra</option>
+					  <option value="Gujarat">Gujarat</option>
+					  <option value="Karnataka">Karnataka</option>
+					  <option value="Andhra Pradesh">Andhra Pradesh</option>
+					  <option value="Odisha">Odisha</option>
+					  <option value="Chhattisgarh">Chhattisgarh</option>
+					  <option value="Tamil Nadu">Tamil Nadu</option>
+					  <option value="Telangana">Telangana</option>
+					  <option value="Bihar">Bihar</option>
+					  <option value="West Bengal">West Bengal</option>
+					  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+					  <option value="Jharkhand">Jharkhand</option>
+					  <option value="Assam">Assam</option>
+					  <option value="Ladakh">Ladakh</option>
+					  <option value="Himachal Pradesh">Himachal Pradesh</option>
+					  <option value="Uttarakhand">Uttarakhand</option>
+					  <option value="Punjab">Punjab</option>
+					  <option value="Haryana">Haryana</option>
+					  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+					  <option value="Kerala">Kerala</option>
+					  <option value="Meghalaya">Meghalaya</option>
+					  <option value="Manipur">Manipur</option>
+					  <option value="Mizoram">Mizoram</option>
+					  <option value="Nagaland">Nagaland</option>
+					  <option value="Tripura">Tripura</option>
+					  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+					  <option value="Sikkim">Sikkim</option>
+					  <option value="Goa">Goa</option>
+					  <option value="Delhi">Delhi</option>
+					  <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+					  <option value="Puducherry">Puducherry</option>
+					  <option value="Chandigarh">Chandigarh</option>
+					  <option value="Lakshadweep">Lakshadweep</option>
+					</select>
+
+             <label for="district">District</label>
+            <input type="text" id="district" name="district" required>
+
+
+            <label for="address_line">Address Line </label>
+            <input type="text" id="address_line" name="address_line" required>
+
+            <label for="pin_code">Pin Code</label>
+            <input type="number" id="pin_code" name="pin_code" required>
+            
+            <label for="mobile">Mobile Number  </label>
+            <input type="text" id="mobile" name="mobile" required>
+            
+            <label for="email">E-mail </label>
+            <input type="text" id="email" name="email" required>
+        </fieldset>
+
+        <fieldset>
+            <legend for "scheme">Choose Scheme Applying For</legend>
+            <select id="scheme" name="scheme" required>
+                <option value="">Select Scheme</option>
+                <option value="post_matric">Post Matric Scholarship</option>
+                <option value="scholaship_for_girls">Scholarship Meant For Girls</option>
+                <option value="ntse">Merit Based Scholarship(NTSE)</option>
+            </select>
+        </fieldset>
+
+			</div>
+            
+            <div>
+				 <label>
+                <input type="checkbox" id="agree" required>
+                All the details furnished by me are true to the best of my knowledge.
+            </label>
+			</div>
         
         <div class="form-buttons">
             <button type="button" onclick="submitFunction()">Apply</button>
@@ -143,6 +232,8 @@
 
     <script>
         var request = new XMLHttpRequest();
+	 	request.onreadystatechange = getInfo;
+
 
         function submitFunction() {
             console.log("SubmitFunction called");
@@ -155,6 +246,35 @@
             var caste = document.getElementById('caste').value;
 			var is_disable=document.getElementById('is_disable').checked;
 			
+			var tenth_percentage=document.getElementById('tenth_percentage').value;
+			var twelth_percentage=document.getElementById('twelth_percentage').value;
+			var ninth_percentage=document.getElementById('ninth_percentage').value;
+			var admission_fee=document.getElementById('admission_fee').value;
+			var tution_fee=document.getElementById('tution_fee').value;
+			var tenth_year=document.getElementById('tenth_year').value;
+			var twelth_year=document.getElementById('twelth_year').value;
+			var ninth_year=document.getElementById('ninth_year').value;
+			
+			var state=document.getElementById('state').value;
+			var district=document.getElementById('district').value;
+			var address_line=document.getElementById('address_line').value;
+			var pin_code=document.getElementById('pin_code').value;
+			var mobile=document.getElementById('mobile').value;
+			var email=document.getElementById('email').value;
+
+
+			var contactData={
+				"aadharNumber":aadhar_number,
+				"instituteCode":null,
+				"state":state,
+				"district":district,
+				"addressLine":address_line,
+				"pincode":pin_code,
+				"mobileNumber":mobile,
+				"email":email,
+				}
+
+
 			
             var dataToSend = {
                 "aadharNumber": aadhar_number,
@@ -165,15 +285,50 @@
                 "caste": caste,
                 "disable":is_disable,
             };
+            
             console.log(dataToSend);
 
+            
+            var eduData={
+				"aadharNumber":aadhar_number,
+				"tenthPercentage":tenth_percentage,
+				"twelthPercentage":twelth_percentage,
+				"ninthPercentage":ninth_percentage,
+				"admissionFee":admission_fee,
+				"tuitionFee":tution_fee,
+				"tenthYear":tenth_year,
+				"twelthYear":twelth_year,
+				"ninthYear":ninth_year,
+			}
+			
+			
+            console.log(eduData);
+			console.log(contactData);
+			
             var url = 'http://localhost:8081/MyRestAPI2/rest/personalInfo/add';
-
+            var urlEdu='http://localhost:8081/MyRestAPI2/rest/educationalDetails/add';
+			var contUrl='http://localhost:8081/MyRestAPI2/rest/contactDetails/add';
+			
             try {
-                request.onreadystatechange = getInfo;
                 request.open("POST", url, true);
                 request.setRequestHeader("Content-Type", "application/json");
                 request.send(JSON.stringify(dataToSend));
+            } catch (e) {
+                console.error("Unable to connect to server:", e);
+            }
+            
+             try {
+                request.open("POST", urlEdu, true);
+                request.setRequestHeader("Content-Type", "application/json");
+                request.send(JSON.stringify(eduData));
+            } catch (e) {
+                console.error("Unable to connect to server:", e);
+            }
+            
+            try {
+                request.open("POST", contUrl, true);
+                request.setRequestHeader("Content-Type", "application/json");
+                request.send(JSON.stringify(contactData));
             } catch (e) {
                 console.error("Unable to connect to server:", e);
             }
