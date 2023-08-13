@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            align-items: center;
+        }
+
+        legend {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"],input[type="reset"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"],input[type="reset"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Scholarship Application Form</h1>
+    <form name="theForm">
+        <div class="container">
+            <fieldset>
+                <legend>Basic Details</legend>
+                <label for="aadhar_number">Aadhar Number:</label>
+                <input type="text" id="aadhar_number" name="aadhar_number" placeholder="Enter Aadhar Number" required>
+
+                <label for="father_name">Father's Name:</label>
+                <input type="text" id="father_name" name="father_name" placeholder="Enter Father's Name" required>
+
+                <label for="mother_name">Mother's Name:</label>
+                <input type="text" id="mother_name" name="mother_name" placeholder="Enter Mother's Name" required>
+                
+                <label for="marital_status">Marital Status:</label>
+                <input type="checkbox" id="marital_status" name="marital_status" checked>
+                
+                <label for="annual_income">Annual Family Income (in Rs):</label>
+                <input type="number" id="annual_income" name="annual_income" placeholder="Enter Annual Income" step="10000" required>
+                
+                <label for="caste">Caste:</label>
+                <input type="text" id="caste" name="caste" placeholder="Enter Caste" required>
+                
+                <label for="is_disable">Is Disabled:</label>
+                <input type="checkbox" id="is_disable" name="is_disable" checked>
+                <button disabled>disable</button>
+            </fieldset>
+            
+            <label>
+                <input type="checkbox" id="agree" required>
+                All the details furnished by me are true to the best of my knowledge.
+            </label>
+        </div>
+        
+        <div>
+         <fieldset>
+            <legend>AcademicDetails</legend>
+            <label for="institute_code">Institute Code</label>
+            <input type="text" id="institute_code" name="institute_code" required>
+
+            <label for="tenth_percentage">10th Percentage </label>
+            <input type="number" id="tenth_percentage" name="tenth_percentage" min="35" max="100" step="0.01" required>
+
+            <label for="twelth_percentage">12th Percentage</label>
+            <input type="number" id="twelth_percentage" name="twelth_percentage" min="35" max="100" step="0.01" required>
+
+            <label for="ninth_percentage">9th Percentage</label>
+            <input type="number" id="ninth_percentage" name="ninth_percentage" min="35" max="100" step="0.01" required>
+
+            <label for="admission_fee">Admission Fee </label>
+            <input type="text" id="admission_fee" name="admission_fee" required>
+
+            <label for="tution_fee">Tution Fee</label>
+            <input type="text" id="tution_fee" name="tution_fee" required>
+
+            <label for="tenth_year">10th Passing Year </label>
+            <input type="number" id="tenth_year" name="tenth_year" min="1900" max="2023">
+            
+            <label for="twelth_year">12th Passing Year </label>
+            <input type="number" id="twelth_year" name="twelth_year" min="1900" max="2023">
+            
+            <label for="ninth_year">10th Passing Year </label>
+            <input type="number" id="ninth_year" name="ninth_year" min="1900" max="2023">
+
+            </fieldset></div>
+        
+        <div class="form-buttons">
+            <button type="button" onclick="submitFunction()">Apply</button>
+            <input type="reset" value="Clear">
+        </div>
+    </form>
+    
+    <p>Status: <span id="dataHere"></span></p>
+
+    <script>
+        var request = new XMLHttpRequest();
+
+        function submitFunction() {
+            console.log("SubmitFunction called");
+
+            var aadhar_number = document.getElementById('aadhar_number').value;
+            var father_name = document.getElementById('father_name').value;
+            var mother_name = document.getElementById('mother_name').value;
+            var marital_status=document.getElementById('marital_status').checked;
+            var annual_income = document.getElementById('annual_income').value;
+            var caste = document.getElementById('caste').value;
+			var is_disable=document.getElementById('is_disable').checked;
+			
+			
+            var dataToSend = {
+                "aadharNumber": aadhar_number,
+                "fatherName": father_name,
+                "motherName": mother_name,
+                "maritalStatus":marital_status,
+                "annualIncome": annual_income,
+                "caste": caste,
+                "disable":is_disable,
+            };
+            console.log(dataToSend);
+
+            var url = 'http://localhost:8081/MyRestAPI2/rest/personalInfo/add';
+
+            try {
+                request.onreadystatechange = getInfo;
+                request.open("POST", url, true);
+                request.setRequestHeader("Content-Type", "application/json");
+                request.send(JSON.stringify(dataToSend));
+            } catch (e) {
+                console.error("Unable to connect to server:", e);
+            }
+        }
+
+        function getInfo() {
+            if (request.readyState === 0) {
+                alert("Initializing ...");
+            }
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                    alert("Data inserted Successfully");
+                    var val = request.responseText;
+                    document.getElementById('dataHere').innerHTML = val;
+                } else {
+                    console.error("Request failed with status:", request.status);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

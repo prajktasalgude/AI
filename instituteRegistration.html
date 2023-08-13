@@ -1,0 +1,240 @@
+<html>
+<head>
+	
+	<style>
+        body {
+           font-family: Arial, sans-serif;
+           line-height: 1.6;
+           margin: 20px;
+       }
+
+       h1 {
+           text-align: center;
+       }
+       label {
+           display: block;
+           font-weight: bold;
+           margin-top: 10px;
+           align-items: center;
+       }
+       input[type="text"],
+       input[type="number"],
+       input[type="email"],
+       input[type="date"],
+       input[type="password"],
+       select,
+       textarea {
+           width: 50%;
+           padding: 10px;
+           margin-bottom: 10px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+           box-sizing: border-box;
+       }
+       input[type="submit"],input[type="reset"] {
+           background-color: #4CAF50;
+           color: white;
+           padding: 10px 20px;
+           border: none;
+           border-radius: 4px;
+           cursor: pointer;
+       }
+
+       input[type="submit"],input[type="reset"]:hover {
+           background-color: #45a049;
+       }
+       
+   </style>
+	
+<script>
+
+var request=new XMLHttpRequest();
+
+   function submitFunction() {
+    console.log("SendInfo called");
+    
+		
+		
+		console.log("institute code assign try");
+		var InstituteCode=document.theForm.InstituteCode.value;
+		var iname=document.theForm.iname.value;
+		var pname=document.theForm.pname.value;
+		var location=document.theForm.location.value;
+		var psw=document.theForm.psw.value;
+				
+
+	//document.writeln('<h1>'+InstituteCode+'</h1>');
+		//document.writeln('<h1>'+isCode+'</h1>');
+
+		//var isCode=document.getElementById(InstituteCode).value;
+		
+	//	alert(isCode);
+		
+		
+		console.log("institute code assign done");
+	//	console.log(isCode);
+		//alert("Data inserted");
+		console.log("assigning name ");
+		
+	//	var iname=document.theForm.iname.value;
+		//alert(psw);
+		//alert(location);
+		//alert(pname);
+		//alert(iname);
+		//alert(InstituteCode);
+		//console.log('instituteName '+name);
+		
+	
+		console.log('principleName '+pname);
+		//alert(pname);
+		
+		console.log('location '+location);
+		
+		
+		console.log('institutePassword '+psw);
+		
+		
+		
+		var dataToSend = {
+				"instituteCode": InstituteCode,
+		        "instituteName": iname,
+		        "principleName": pname,
+		        "location": location,
+		        "institutePassword" : psw
+		 }
+		console.log('>>before data : '+JSON.stringify(dataToSend));
+		
+		dataToSend.instituteCode=InstituteCode;
+		dataToSend.instituteName=iname;
+		dataToSend.principleName=pname;
+		dataToSend.location=location;
+		dataToSend.institutePassword=psw;
+		//dataToSend.isVerified=ver;
+		
+		console.log('>>after data : '+JSON.stringify(dataToSend));
+				
+		//var url='http://localhost:8081/MyRestAPI2/rest/institute/add/${InstituteCode}/${iname}/${pname}/${location}/${psw}';
+		var url='http://localhost:8081/MyRestAPI2/rest/institute/add';
+			
+		console.log('sendInfo: url : '+url);
+		
+		if(window.ActiveXObject) { //Edge/IE
+			request=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+
+		try
+		{
+			request.onreadystatechange=getInfo();
+			
+			request.open("POST",url,true);
+			
+			request.setRequestHeader("Content-Type","application/json");
+			
+			request.send(JSON.stringify(dataToSend));
+			alert("Institute Registered");
+		}
+		catch(e)
+		{
+			
+			alert("Unable to connect to server"+e);
+			
+		}
+		
+		
+}
+
+
+
+	function getInfo()
+	{
+		//alert("hello");
+	//	if(request.readyState==0) {
+		//	
+	//		console.log('request not initialized');
+//		}
+		//else {
+		//	
+	//		console.log('request initialized');
+//
+		//}
+	//
+		//if(request.readyState==1) {
+	//		console.log('connected to the server');
+//		}
+//		else {
+//			console.log('request initialized');
+//
+//		}
+	
+		//0 REQUEST TILL NOT INTIALIZED
+		//1 CONNECTED TO THE SERVER
+		//2 REQUEST IS RECIEVED BY TEH SERVER
+		//3 REQUEST IS PROCESSING
+		//4 REQUEST IS DONE AND RESPONSE IS READY
+		//if(request.readyState==4) {//HAS 
+		
+			//console.log('status '+request.status);
+			var val=request.responseText;
+			
+			document.getElementById('dataHere').innerHTML=val;
+			
+			//alert("gyjgk");
+		}
+		
+		
+	//	request.onreadystatechange =function()
+ 
+//	{ alert("hii");
+	//  if (request.readyState === 4 && request.status === 200) {
+    //const responseText = request.responseText;
+    	//		document.getElementById('dataHere').innerHTML=responseText;
+
+		//}
+	//}
+//	}
+</script>
+
+</head>
+<body>
+    <h2>Institute Registration Form </h2>
+    <form name="theForm">
+		
+    <div class="container">
+    <fieldset>
+    <legend>Basic Details:</legend>
+    
+     <label for="InstituteCode"><b>INSTITUTE CODE : </b></label>
+    <input type="text" class="cl" placeholder="Enter Institute Code" name="InstituteCode" id="InstituteCode" required><br><br>
+    
+ 
+    <label for="iname"><b>INSTITUTE NAME : </b></label>
+    <input type="text"class="cl1" placeholder="Enter name" name="iname" id="iname" value="value" required><br><br>
+    
+   
+   <label for="pname"><b>Principle Name: </b></label>
+    <input type="text" name="pname" id="pname" required><br><br>
+
+    <label for="location"><b>LOCATION : </b></label>
+    <select name="location" id="location">
+     <option value="Rural">Rural</option>
+     <option value="Urban">Urban</option>
+   </select><br><br>
+    
+    <label for="psw"><b>Password: </b></label>
+    <input type="password" placeholder="Enter Password" autocomplete="on" name="psw" id="psw" required><br><br>
+
+    </fieldset>
+  </div>
+
+  <div class="form-buttons">
+    <button type="submit" onclick="submitFunction()">submit</button>
+    <input type="reset" value="Clear">
+    
+    </div>
+
+</form>
+
+Status <span id="dataHere"> </span>
+</body>
+
+</html>
